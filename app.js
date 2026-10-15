@@ -3,7 +3,7 @@
 // worker (worker.js, Pyodide). The recording never waits for the processing.
 "use strict";
 
-const APP_VERSION = "2026.10.15-8aa980b4";
+const APP_VERSION = "2026.10.15-4a682e17";
 const UUID = {
   nus: "6e400001-b5a3-f393-e0a9-e50e24dcca9e",
   tx: "6e400003-b5a3-f393-e0a9-e50e24dcca9e",       // status text from the tracker
@@ -902,7 +902,21 @@ function showState() {
   $("st-filt").textContent = st.filters ? `accel ${st.filters.accel}, gyro ${st.filters.gyro}, mag ${st.filters.mag} Hz` : "-";
   $("st-fifo").textContent = st.fifo ? `ovr ${st.fifo.ovr}, drop ${st.fifo.drop}` : "-";
   if (s.error) { $("st-py").textContent = "error: " + s.error; $("st-py").classList.add("bad-text"); }
+  showG(s);
   showPrompt();
+}
+
+// The G button says what a tap will do: three taps in a row once armed, cancelled and armed again
+// (session 2026-10-15_144751).
+function showG(s) {
+  const st = s && s.step ? s.step : null;
+  let label = "G  Record steps", sub = "foot flat first; tap again to stop early";
+  if (st && st.pending) { label = "G  Waits for R"; sub = "arms by itself when R has finished"; }
+  else if (st && st.state === "armed") { label = `G  Armed: ${st.target} steps`; sub = "walk now; tap to cancel"; }
+  else if (st && st.state === "recording") { label = `G  Step ${st.done + 1} of ${st.target}`; sub = "tap to stop early and keep the steps done"; }
+  const b = $("act-g");
+  b.querySelector("b").textContent = label;
+  b.querySelector("span").textContent = sub;
 }
 
 function showPrompt() {
@@ -924,6 +938,7 @@ function stateLine(s) {
   if (s.state === "poses" && s.poses) return `C: pose ${s.poses.n} of ${s.poses.target}`;
   if (s.state === "footcal" && s.footcal) return `I: step ${s.footcal.step} of ${s.footcal.of}`;
   if (s.fsr_calibrating) return "U: keep the foot lifted";
+  if (s.state === "cal1" || s.state === "cal2") return "R: " + s.msg;
   if (s.state !== "run") return s.msg;
   if (s.step && s.step.state !== "idle") return `G: ${s.step.done} of ${s.step.target} steps`;
   if (!s.fsr_cal_ok) return "Ready: press U to set the FSR levels";
@@ -933,6 +948,7 @@ function extraLine(s) {
   if (s.state === "poses" && s.poses) return s.poses.msg;
   if (s.state === "footcal" && s.footcal) return s.footcal.msg;
   if (s.fsr_calibrating) return s.fsr_cal_msg;
+  if (s.state === "cal1" || s.state === "cal2") return "Foot flat on the floor and still: R needs 2 s without movement and starts again if the foot moves.";
   if (s.state !== "run") return "";
   if (s.step && s.step.state !== "idle") return s.step.msg;
   return s.step ? s.step.msg : "";

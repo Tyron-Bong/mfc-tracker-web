@@ -3,7 +3,7 @@
 // works on a walk with no signal.
 // The page's own files: network first (an update arrives when online), cache when offline.
 // Pyodide's files carry their version in the URL, so they are cache first.
-const BUILD = "2026.10.15-8aa980b4";
+const BUILD = "2026.10.15-4a682e17";
 const CACHE = "mfc-web-" + BUILD;
 const CDN_CACHE = "mfc-web-cdn-0.28.3";
 const SHELL = ["./", "index.html", "app.js", "worker.js", "py/mfc.zip", "default_cal.json",
