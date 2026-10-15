@@ -1,0 +1,186 @@
+{
+ "session_format": 1,
+ "wire_format": 1,
+ "receiver_version": "2026.10.13",
+ "started": "2026-10-14 01:51:58",
+ "ended": "2026-10-14 01:52:54",
+ "duration_s": 56.25,
+ "records": {
+  "motion": 2372,
+  "text": 38,
+  "events": 3
+ },
+ "payload_bytes": 244252,
+ "note": "",
+ "calibration_start": {
+  "accel_bias": [
+   0.08871938773893001,
+   0.13632670603518562,
+   0.07135080050533563
+  ],
+  "mag_bias": [
+   37.05967427535592,
+   88.60954061958753,
+   -52.08124323946946
+  ],
+  "mag_scale": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "mag_norm": 32.09277275392127,
+  "accel_scale": [
+   0.998990834061129,
+   0.9989371805382612,
+   1.0020752104193118
+  ],
+  "accel_drift_bias": [
+   0.0436196639517099,
+   0.06399608791873707,
+   -0.026226304623487733
+  ],
+  "g_local": 9.75596774610209,
+  "units": "accel_bias m/s^2 and mag_bias uT in raw sensor units, the scales unitless per axis, accel_drift_bias m/s^2 after bias and scale",
+  "fsr_lifted": [
+   12996.253164556962,
+   43410.60759493671
+  ],
+  "fsr_noise": [
+   262.34798942106784,
+   211.32214401219738
+  ],
+  "drift_captures": 4,
+  "updated_utc": "2026-10-09T10:50:19Z",
+  "foot_L1_m": 0.07657769047724924,
+  "foot_L2_m": 0.16345184780234717,
+  "foot_len_cal": {
+   "gauges_mm": [
+    50.0,
+    100.0
+   ],
+   "heel_deg": [
+    17.26326578796689,
+    38.03929291663098
+   ],
+   "toe_deg": [
+    10.951566094282493,
+    25.13876824963126
+   ],
+   "max_roll_deg": 3.1337919992821863,
+   "ball_to_heel_each_mm": [
+    168.4847948516942,
+    162.28451389391327
+   ],
+   "heel_to_toe_each_mm": [
+    263.18680748361265,
+    235.39821136195815
+   ],
+   "heel_to_toe_mm": 240.0295382795964,
+   "flat_repeat_deg": 0.24215184991091154,
+   "axes_opposed": -0.9869075229262295
+  },
+  "pose_count": 12,
+  "fit_method": "ellipsoid",
+  "fit_residual_mps2": 0.023934539350221957,
+  "pose_coverage": 0.21733394617895122
+ },
+ "calibration_end": {
+  "accel_bias": [
+   0.08871938773893001,
+   0.13632670603518562,
+   0.07135080050533563
+  ],
+  "mag_bias": [
+   37.05967427535592,
+   88.60954061958753,
+   -52.08124323946946
+  ],
+  "mag_scale": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "mag_norm": 32.09277275392127,
+  "accel_scale": [
+   0.998990834061129,
+   0.9989371805382612,
+   1.0020752104193118
+  ],
+  "accel_drift_bias": [
+   0.0436196639517099,
+   0.06399608791873707,
+   -0.026226304623487733
+  ],
+  "g_local": 9.75596774610209,
+  "units": "accel_bias m/s^2 and mag_bias uT in raw sensor units, the scales unitless per axis, accel_drift_bias m/s^2 after bias and scale",
+  "fsr_lifted": [
+   12996.253164556962,
+   43410.60759493671
+  ],
+  "fsr_noise": [
+   262.34798942106784,
+   211.32214401219738
+  ],
+  "drift_captures": 4,
+  "updated_utc": "2026-10-09T10:50:19Z",
+  "foot_L1_m": 0.07657769047724924,
+  "foot_L2_m": 0.16345184780234717,
+  "foot_len_cal": {
+   "gauges_mm": [
+    50.0,
+    100.0
+   ],
+   "heel_deg": [
+    17.26326578796689,
+    38.03929291663098
+   ],
+   "toe_deg": [
+    10.951566094282493,
+    25.13876824963126
+   ],
+   "max_roll_deg": 3.1337919992821863,
+   "ball_to_heel_each_mm": [
+    168.4847948516942,
+    162.28451389391327
+   ],
+   "heel_to_toe_each_mm": [
+    263.18680748361265,
+    235.39821136195815
+   ],
+   "heel_to_toe_mm": 240.0295382795964,
+   "flat_repeat_deg": 0.24215184991091154,
+   "axes_opposed": -0.9869075229262295
+  },
+  "pose_count": 12,
+  "fit_method": "ellipsoid",
+  "fit_residual_mps2": 0.023934539350221957,
+  "pose_coverage": 0.21733394617895122
+ },
+ "status": {
+  "filters": {
+   "accel": "off",
+   "gyro": "off",
+   "mag": "11.1"
+  },
+  "sensors": [
+   true,
+   true
+  ],
+  "imu_fifo": "on, 23 pairs, accel 1.107 g, INT seen",
+  "mag_fifo": "on, 60 Hz, 15 readings in 250 ms",
+  "fifo_health": {
+   "pairs": "776462",
+   "mag": "194131",
+   "nack": "0",
+   "ovr": "2",
+   "drop": "1",
+   "pin": "753142/753142",
+   "odr": "232.40"
+  }
+ },
+ "packed": {
+  "from": "2026-10-14_015158.mfcraw",
+  "bytes": 101901,
+  "original_bytes": 275630
+ }
+}
