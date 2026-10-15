@@ -3,7 +3,7 @@
 // worker (worker.js, Pyodide). The recording never waits for the processing.
 "use strict";
 
-const APP_VERSION = "2026.10.15-b20e56a4";
+const APP_VERSION = "2026.10.15-8aa980b4";
 const UUID = {
   nus: "6e400001-b5a3-f393-e0a9-e50e24dcca9e",
   tx: "6e400003-b5a3-f393-e0a9-e50e24dcca9e",       // status text from the tracker
@@ -1142,7 +1142,9 @@ async function init() {
     if (py.ready && py.started && !py.statePending) { py.statePending = true; py.worker.postMessage({ type: "state" }); }
   }, 300);
   if ("serviceWorker" in navigator && location.protocol === "https:") {
-    navigator.serviceWorker.register("sw.js").catch((err) => log("[offline] no service worker: " + err));
+    $("v-offline").textContent = "storing (about 13 MB, once)";
+    navigator.serviceWorker.register("sw.js").catch((err) => { log("[offline] no service worker: " + err); $("v-offline").textContent = "not available"; });
+    navigator.serviceWorker.ready.then(() => { $("v-offline").textContent = "ready: works with no signal"; log("[offline] ready: the page works with no signal"); });
   }
   const unfinished = (await DB.all("sessions")).filter((m) => !m.ended);
   if (unfinished.length) log(`[session] ${unfinished.length} session(s) were interrupted (page closed mid-recording); they are kept under Sessions`);
